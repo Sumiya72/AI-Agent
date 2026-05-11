@@ -10,7 +10,7 @@ def get_llm():
         temperature=0.3
     )
 
-def create_agent():
+def create_chain():
     llm = get_llm()
 
     prompt = ChatPromptTemplate.from_messages([
@@ -18,6 +18,4 @@ def create_agent():
         ("user", "{input}")
     ])
 
-    chain = prompt | llm | StrOutputParser()
-
-    return chain
+    return prompt | llm | StrOutputParser()
